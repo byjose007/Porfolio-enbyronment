@@ -1,0 +1,8 @@
+/
+/case-studies/vy-vortex
+/case-studies/pegasi
+/notes/signals-vs-rxjs
+/notes/por-que-angular
+/notes/mostrar-menos
+/notes/claude-code
+/notes/vy-vortex-demo
