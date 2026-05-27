@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+
+  <!-- Frame -->
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="#1E1E1E" stroke-width="1"/>
+
+  <!-- Left accent -->
+  <rect x="80" y="80" width="1" height="460" fill="#F0F0F0" opacity="0.12"/>
+
+  <!-- Label -->
+  <text x="100" y="116"
+    font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace"
+    font-size="13" letter-spacing="0.12em" fill="#595959">// enbyronment.dev</text>
+
+  <!-- Name -->
+  <text x="100" y="262"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="100" font-weight="700" font-style="italic" fill="#F0F0F0">Byron</text>
+  <text x="100" y="368"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="100" font-weight="700" font-style="italic" fill="#F0F0F0">Armijos</text>
+
+  <!-- Divider -->
+  <rect x="100" y="396" width="580" height="1" fill="#252525"/>
+
+  <!-- Role -->
+  <text x="100" y="432"
+    font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+    font-size="15" letter-spacing="0.14em" fill="#595959">SENIOR FRONTEND &amp; UX ENGINEER</text>
+
+  <!-- Tagline -->
+  <text x="100" y="494"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="27" font-style="italic" fill="#A0A0A0">Trabajo donde equivocarse tiene consecuencias</text>
+
+  <!-- Stats — right column -->
+  <text x="1010" y="210"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="68" font-weight="700" fill="#F0F0F0" text-anchor="middle">10+</text>
+  <text x="1010" y="242"
+    font-family="-apple-system, Helvetica, Arial, sans-serif"
+    font-size="13" fill="#595959" text-anchor="middle">años de experiencia</text>
+
+  <rect x="950" y="262" width="120" height="1" fill="#252525"/>
+
+  <text x="1010" y="332"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="68" font-weight="700" fill="#F0F0F0" text-anchor="middle">−40%</text>
+  <text x="1010" y="364"
+    font-family="-apple-system, Helvetica, Arial, sans-serif"
+    font-size="13" fill="#595959" text-anchor="middle">tiempo en tareas críticas</text>
+
+  <rect x="950" y="384" width="120" height="1" fill="#252525"/>
+
+  <text x="1010" y="454"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="68" font-weight="700" fill="#F0F0F0" text-anchor="middle">5</text>
+  <text x="1010" y="486"
+    font-family="-apple-system, Helvetica, Arial, sans-serif"
+    font-size="13" fill="#595959" text-anchor="middle">productos en producción</text>
+
+  <!-- Bottom bar -->
+  <rect x="40" y="552" width="1120" height="1" fill="#1A1A1A"/>
+
+  <text x="80" y="580"
+    font-family="'SFMono-Regular', Consolas, monospace"
+    font-size="13" letter-spacing="0.05em" fill="#767676">enbyronment.dev</text>
+
+  <text x="1120" y="580"
+    font-family="-apple-system, Helvetica, Arial, sans-serif"
+    font-size="13" fill="#767676" text-anchor="end">Aviación · Salud · Banca</text>
+
+</svg>
