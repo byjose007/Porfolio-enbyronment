@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mostrar menos para que el usuario entienda más — Byron Armijos</title>
+  <meta name="description" content="Mi primer instinto fue mejorar los mensajes de error. El problema era otro.">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="notes.css">
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo">← Byron Armijos</a>
+        <button class="btn-theme" id="btn-theme">
+          <span id="theme-lbl">oscuro</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="article-header">
+      <div class="article-meta">Notas de campo · 5 min lectura</div>
+      <h1 class="article-title">Reducir la carga cognitiva en formularios complejos</h1>
+    </header>
+
+    <article class="content">
+      <p>Muchas veces asumimos que un problema de usabilidad se resuelve ajustando el diseño visual o haciendo los
+        textos más grandes. Pero en ocasiones, el verdadero desafío es que el usuario se enfrenta a demasiada
+        información al mismo tiempo.</p>
+
+      <h2>Un formulario difícil de gestionar</h2>
+      <p>En el proyecto VY People PRL (Prevención de Riesgos Laborales), el formulario para reportar accidentes había
+        crecido de forma orgánica con los años. A nivel técnico, era un componente muy grande que mezclaba lógica,
+        validaciones y llamadas al servidor, lo que complicaba bastante hacer cambios sin romper otras partes.</p>
+
+      <p>Pero el mayor impacto lo sufrían los operadores. La pantalla obligaba al usuario a rellenar o revisar casi
+        todos los bloques de información a la vez, haciéndoles pensar en términos de cómo se guardan los datos en el
+        sistema en lugar de guiarles por el flujo del reporte.</p>
+
+      <h2>Buscando una arquitectura más amigable</h2>
+      <p>Para solucionarlo, decidimos refactorizar el código separando las responsabilidades de forma clara (gestión del
+        estado, validación, transformación de datos, etc.).</p>
+
+      <p>Esta mejora técnica fue fundamental porque nos permitió transformar la interfaz. Al tener el estado del
+        formulario desacoplado y controlado, pudimos aplicar un diseño basado en la <strong>revelación progresiva
+          (Progressive Disclosure)</strong>.</p>
+
+      <blockquote>
+        "Al mostrar solo los campos necesarios según el contexto, ayudamos a que la herramienta acompañe al usuario en
+        su proceso diario."
+      </blockquote>
+
+      <h2>Simplificando la experiencia paso a paso</h2>
+      <p>Durante la refactorización, evaluamos si nos convenía un sistema de formularios completamente dinámico
+        (generado desde el servidor) o uno más estructurado. Optamos por un modelo híbrido: mantener una estructura
+        sólida para los campos obligatorios por normativa, y dejar flexibilidad para añadir configuraciones dinámicas
+        adicionales cuando fuera necesario.</p>
+
+      <p>Esto nos permitió mantener un código muy robusto y fácil de tipar, sin añadir una complejidad excesiva de
+        mantenimiento.</p>
+
+      <h2>El resultado</h2>
+      <p>Conseguir un código más limpio y con buenas pruebas unitarias fue una gran mejora técnica. Pero la verdadera
+        victoria fue que, gracias a esta separación, la persona que reporta un incidente ahora ve una interfaz mucho más
+        tranquila. Mostrar la complejidad solo cuando es realmente necesario ayuda a reducir la carga cognitiva en
+        momentos donde la concentración es clave.</p>
+
+    </article>
+
+    <a href="../index.html#writing" class="back-link">← Volver al inicio</a>
+  </main>
+
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const btn = document.getElementById('btn-theme');
+      const lbl = document.getElementById('theme-lbl');
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+      function applyTheme(dark) {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        lbl.textContent = dark ? 'claro' : 'oscuro';
+        localStorage.setItem('ba-theme', dark ? 'dark' : 'light');
+      }
+
+      const saved = localStorage.getItem('ba-theme');
+      applyTheme(saved ? saved === 'dark' : mq.matches);
+
+      btn.addEventListener('click', () => {
+        applyTheme(html.getAttribute('data-theme') !== 'dark');
+      });
+
+      mq.addEventListener('change', e => {
+        if (!localStorage.getItem('ba-theme')) applyTheme(e.matches);
+      });
+    })();
+  </script>
+</body>
+
+</html>

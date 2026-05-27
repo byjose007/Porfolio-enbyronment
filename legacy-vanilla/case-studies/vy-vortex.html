@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VY Vortex — Byron Armijos</title>
+  <meta name="description" content="Case Study: VY Vortex - Reducción de carga cognitiva en operadores de disrupciones de vuelo.">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../notes/notes.css">
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo">← Byron Armijos</a>
+        <button class="btn-theme" id="btn-theme">
+          <span id="theme-lbl">oscuro</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="article-header">
+      <div class="article-meta">Case Study · Aviación · 2024</div>
+      <h1 class="article-title">VY Vortex: Decisiones claras en situaciones críticas</h1>
+    </header>
+
+    <article class="content">
+      <p>Cuando un vuelo sufre una disrupción importante (retrasos severos, cancelaciones), un equipo de operadores tiene que reubicar rápidamente a los pasajeros. Antes de Vortex, este proceso implicaba saltar entre hojas de cálculo, correos electrónicos y tres sistemas distintos que no estaban sincronizados.</p>
+
+      <div class="stats-row">
+        <div class="stats-item">
+          <h4>Rol</h4>
+          <p>Senior Frontend Engineer</p>
+        </div>
+        <div class="stats-item">
+          <h4>Tecnologías</h4>
+          <p>Angular 19, Signals, WebSockets</p>
+        </div>
+        <div class="stats-item">
+          <h4>Impacto</h4>
+          <p>−50% interacciones, −40% tiempo medio</p>
+        </div>
+      </div>
+
+      <h2>El desafío real</h2>
+      <p>A nivel técnico, el reto era unificar todas estas fuentes de datos y mantenerlas actualizadas en tiempo real mediante WebSockets. Pero el verdadero desafío de usabilidad era la <strong>carga cognitiva</strong>: ¿cómo muestras la información de cientos de pasajeros y decenas de vuelos sin abrumar a alguien que está trabajando bajo máxima presión?</p>
+
+      <p>Nuestra primera versión falló durante las pruebas con usuarios. Al tener tanta información disponible, cometimos el error de mostrarla toda en la misma pantalla. La operadora más senior nos dio una lección de UX al ver la pantalla: <em>«Hay demasiada información junta. En una incidencia yo no me detengo a leer cada detalle, necesito escanear visualmente. Aquí me cuesta encontrar lo urgente.»</em></p>
+
+      <h2>La solución: Revelación progresiva</h2>
+      <p>Dimos un paso atrás y replanteamos la arquitectura de la información. En lugar de volcar todos los datos en pantalla, diseñamos una interfaz que "respira".</p>
+      
+      <p>Utilizamos la <strong>revelación progresiva</strong> para mostrar primero solo los indicadores clave de estado (códigos de colores claros, números de asientos libres). Solo cuando el operador necesita profundizar en un vuelo específico, el sistema despliega los detalles secundarios, como pasajeros con necesidades especiales o conexiones en riesgo.</p>
+
+      <blockquote>
+        "En un entorno de alta presión, la pantalla tiene que pensar por ti — no pedirte que pienses por ella."
+      </blockquote>
+
+      <h2>Drag & Drop con contexto</h2>
+      <p>Para la reubicación de pasajeros, implementamos un sistema fluido usando el <code>Drag & Drop</code> del Angular CDK. Mover a un grupo de pasajeros de un vuelo cancelado a uno nuevo ahora es un movimiento natural que actualiza instantáneamente el estado local gracias a Signals, mientras se consolida asíncronamente con el servidor.</p>
+
+      <h2>Impacto en el negocio</h2>
+      <p>Al reducir el ruido visual y consolidar 3 herramientas en 1, los operadores ya no tienen que construir un modelo mental de la situación basándose en diferentes pestañas. El resultado fue una reducción del 50% en las interacciones necesarias por tarea, acortando casi a la mitad el tiempo medio de reubicación de pasajeros afectados.</p>
+
+    </article>
+
+    <a href="../index.html#projects" class="back-link">← Volver a Proyectos</a>
+  </main>
+
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const btn = document.getElementById('btn-theme');
+      const lbl = document.getElementById('theme-lbl');
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+      function applyTheme(dark) {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        lbl.textContent = dark ? 'claro' : 'oscuro';
+        localStorage.setItem('ba-theme', dark ? 'dark' : 'light');
+      }
+
+      const saved = localStorage.getItem('ba-theme');
+      applyTheme(saved ? saved === 'dark' : mq.matches);
+
+      btn.addEventListener('click', () => {
+        applyTheme(html.getAttribute('data-theme') !== 'dark');
+      });
+
+      mq.addEventListener('change', e => {
+        if (!localStorage.getItem('ba-theme')) applyTheme(e.matches);
+      });
+    })();
+  </script>
+</body>
+
+</html>

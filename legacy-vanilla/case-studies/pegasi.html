@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pegasi — Byron Armijos</title>
+  <meta name="description" content="Case Study: Pegasi - Primer software de monitorización oncológica en Chile.">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../notes/notes.css">
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo">← Byron Armijos</a>
+        <button class="btn-theme" id="btn-theme">
+          <span id="theme-lbl">oscuro</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="article-header">
+      <div class="article-meta">Case Study · Salud y Oncología · 2023</div>
+      <h1 class="article-title">Pegasi: Diseño centrado en el paciente y el médico</h1>
+    </header>
+
+    <article class="content">
+      <p>Pegasi nació con el objetivo de convertirse en el primer software chileno de monitorización oncológica de su tipo. En oncología, la precisión de los datos y el historial médico del paciente son críticos, lo que a menudo se traduce en interfaces pesadas y difíciles de navegar.</p>
+
+      <div class="stats-row">
+        <div class="stats-item">
+          <h4>Rol</h4>
+          <p>Frontend Engineer</p>
+        </div>
+        <div class="stats-item">
+          <h4>Tecnologías</h4>
+          <p>Angular, Micro-Frontends, NestJS</p>
+        </div>
+        <div class="stats-item">
+          <h4>Impacto</h4>
+          <p>Primer software de su tipo, Certificado WCAG 2.1 AA</p>
+        </div>
+      </div>
+
+      <h2>Diseñando para la alta demanda cognitiva</h2>
+      <p>Los oncólogos necesitaban una plataforma densa en datos, pero no queríamos que fuera abrumadora; tenía que ser rápida, pero no fría. Cuando un médico lleva horas de guardia y tiene que consultar el historial de un paciente crónico, una mala decisión de interfaz puede provocar un error o fatiga visual innecesaria.</p>
+
+      <p>Decidimos utilizar colores neutros y dejar mucho espacio en blanco para respirar. En lugar de mostrar todas las variables de un tratamiento a la vez, estructuramos la información para que fuera apareciendo únicamente cuando el especialista la necesitaba.</p>
+
+      <blockquote>
+        "Cada decisión de diseño pasó por un filtro fundamental: ¿esto le hace el trabajo más fácil o más difícil a un médico que lleva 12 horas de guardia?"
+      </blockquote>
+
+      <h2>Micro-Frontends y Accesibilidad</h2>
+      <p>Para asegurar que la plataforma pudiera escalar y ser mantenida por diferentes equipos sin pisarse entre ellos, optamos por una arquitectura de <strong>Micro-Frontends</strong> en Angular, respaldada por un Backend-For-Frontend (BFF) construido en NestJS. Esto nos dio agilidad en los despliegues de módulos individuales.</p>
+
+      <p>Además, la accesibilidad no fue un paso posterior, sino un requisito fundacional. Desde el primer día, diseñamos y programamos respetando los estándares <strong>WCAG 2.1 AA</strong>, asegurando que la herramienta fuera verdaderamente inclusiva, tanto en el contraste de colores como en la navegación por teclado para el personal médico.</p>
+
+      <h2>El Resultado</h2>
+      <p>Pegasi no solo logró salir al mercado como el primer software de su clase en Chile, sino que sentó un precedente interno en la creación de aplicaciones corporativas de salud: demostrar que el software médico robusto y seguro también puede tener una experiencia de usuario excepcional y humana.</p>
+
+    </article>
+
+    <a href="../index.html#projects" class="back-link">← Volver a Proyectos</a>
+  </main>
+
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const btn = document.getElementById('btn-theme');
+      const lbl = document.getElementById('theme-lbl');
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+      function applyTheme(dark) {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        lbl.textContent = dark ? 'claro' : 'oscuro';
+        localStorage.setItem('ba-theme', dark ? 'dark' : 'light');
+      }
+
+      const saved = localStorage.getItem('ba-theme');
+      applyTheme(saved ? saved === 'dark' : mq.matches);
+
+      btn.addEventListener('click', () => {
+        applyTheme(html.getAttribute('data-theme') !== 'dark');
+      });
+
+      mq.addEventListener('change', e => {
+        if (!localStorage.getItem('ba-theme')) applyTheme(e.matches);
+      });
+    })();
+  </script>
+</body>
+
+</html>

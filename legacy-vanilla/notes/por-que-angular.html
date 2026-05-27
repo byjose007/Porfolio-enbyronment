@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Por qué sigo eligiendo Angular en 2026 — Byron Armijos</title>
+  <meta name="description" content="Lo que React vende como flexibilidad, Angular lo impone como restricción.">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="notes.css">
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="wrap">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo">← Byron Armijos</a>
+        <button class="btn-theme" id="btn-theme">
+          <span id="theme-lbl">oscuro</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="article-header">
+      <div class="article-meta">Notas de campo · 5 min lectura</div>
+      <h1 class="article-title">Por qué sigo apostando por Angular para proyectos largos</h1>
+    </header>
+
+    <article class="content">
+      <p>La estructura de Angular puede parecer muy estricta al principio, en comparación con la flexibilidad de otras
+        opciones. Sin embargo, tras varias refactorizaciones y trabajar en equipos distribuidos, he comprobado que esas
+        mismas reglas son las que ayudan a mantener el orden en aplicaciones empresariales a lo largo de los años.</p>
+
+      <h2>El reto de la flexibilidad</h2>
+      <p>En el ecosistema frontend, tener total libertad para elegir el gestor de estado o el enrutador es fantástico
+        para empezar rápido. Pero en proyectos grandes, esa libertad a veces significa que cada desarrollador puede
+        implementar su propia arquitectura, complicando el mantenimiento a largo plazo para el resto del equipo.</p>
+
+      <h2>Un estándar claro desde el primer día</h2>
+      <p>Con Angular, el equipo ya parte de una base compartida. Tienes inyección de dependencias y un enrutador
+        integrado desde el principio. En proyectos corporativos —como en aviación, salud o banca— donde la curva de
+        aprendizaje de los nuevos ingenieros debe ser lo más rápida posible, contar con este estándar es una gran
+        ventaja.</p>
+
+      <blockquote>
+        "Tener ciertas decisiones de arquitectura ya resueltas por el framework nos permite centrar toda la energía en
+        entender y resolver la lógica de negocio."
+      </blockquote>
+
+      <h2>Evolución constante</h2>
+      <p>Lo que más valoro de Angular en sus últimas versiones (Standalone components, Signals, Control Flow) es cómo ha
+        sabido modernizarse facilitando herramientas de migración que automatizan gran parte del trabajo, respetando la
+        compatibilidad hacia atrás.</p>
+
+      <p>La flexibilidad te permite arrancar muy rápido. Una estructura definida, en cambio, te da herramientas sólidas
+        para escalar de forma sostenible. Por eso, para proyectos de largo recorrido, Angular sigue siendo mi opción
+        preferida.</p>
+
+    </article>
+
+    <a href="../index.html#writing" class="back-link">← Volver al inicio</a>
+  </main>
+
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const btn = document.getElementById('btn-theme');
+      const lbl = document.getElementById('theme-lbl');
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+      function applyTheme(dark) {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        lbl.textContent = dark ? 'claro' : 'oscuro';
+        localStorage.setItem('ba-theme', dark ? 'dark' : 'light');
+      }
+
+      const saved = localStorage.getItem('ba-theme');
+      applyTheme(saved ? saved === 'dark' : mq.matches);
+
+      btn.addEventListener('click', () => {
+        applyTheme(html.getAttribute('data-theme') !== 'dark');
+      });
+
+      mq.addEventListener('change', e => {
+        if (!localStorage.getItem('ba-theme')) applyTheme(e.matches);
+      });
+    })();
+  </script>
+</body>
+
+</html>

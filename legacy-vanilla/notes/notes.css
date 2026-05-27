@@ -1,0 +1,295 @@
+/* ---------- CYBERNETIC NOTES STYLE SYSTEM ---------- */
+:root {
+  --bg: #0a0e13;
+  --bg-2: #0c1219;
+  --surface: #111922;
+  --surface-2: #16212c;
+  --line: rgba(140, 170, 185, .10);
+  --line-2: rgba(140, 170, 185, .18);
+  --text: #e9eff3;
+  --dim: #a3b5c1;
+  --mute: #5c707e;
+  --accent: #3de1c5;        /* signal teal */
+  --accent-soft: rgba(61, 225, 197, .14);
+  --glow: rgba(61, 225, 197, .35);
+  --warm: #ffb454;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --max-w: 780px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  font-size: 18.5px;
+  line-height: 1.75;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: 80px;
+}
+
+/* Atmosphere grain + color wash */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(800px 500px at 80% -10%, rgba(61, 225, 197, .06), transparent 60%),
+    radial-gradient(600px 500px at 15% 15%, rgba(125, 151, 255, .04), transparent 55%);
+}
+
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Sticky Nav styling */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 19, .75);
+  backdrop-filter: blur(12px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-logo {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--dim);
+  letter-spacing: .02em;
+  transition: color 0.28s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-logo:hover {
+  color: var(--accent);
+}
+
+.btn-theme {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(61, 225, 197, 0.04);
+  border: 1px solid var(--line-2);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.28s var(--ease);
+}
+
+.btn-theme:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px -3px var(--glow);
+}
+
+/* Article header */
+.article-header {
+  padding: 80px 0 40px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 48px;
+}
+
+.article-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--accent);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.article-meta::before {
+  content: "■";
+  font-size: 8px;
+  color: var(--accent);
+}
+
+.article-title {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: clamp(32px, 5.5vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+/* Content styling */
+.content {
+  font-size: 18.5px;
+  color: var(--dim);
+}
+
+.content p {
+  margin-bottom: 26px;
+  line-height: 1.75;
+}
+
+.content strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.content h2 {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 54px 0 20px;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.content h3 {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 36px 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.content ul, .content ol {
+  margin-bottom: 26px;
+  padding-left: 24px;
+}
+
+.content li {
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+/* Code styling */
+.content code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14.5px;
+  background: var(--surface-2);
+  color: #a3b5c1;
+  padding: 3px 6px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
+
+.content pre {
+  background: var(--bg-2);
+  padding: 20px;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin-bottom: 26px;
+  border: 1px solid var(--line);
+}
+
+.content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Blockquote styling */
+.content blockquote {
+  border-left: 3px solid var(--accent);
+  background: rgba(61, 225, 197, 0.03);
+  border-radius: 0 12px 12px 0;
+  padding: 22px 26px;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 40px 0;
+  border-top: 1px solid rgba(61, 225, 197, 0.05);
+  border-bottom: 1px solid rgba(61, 225, 197, 0.05);
+  border-right: 1px solid rgba(61, 225, 197, 0.05);
+}
+
+/* Back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 60px;
+  margin-bottom: 80px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13.5px;
+  color: var(--accent);
+  transition: transform 0.25s;
+  border: 1px solid var(--line-2);
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: var(--surface);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateX(-4px);
+  box-shadow: 0 0 16px -6px var(--glow);
+}
+
+/* Stats / Tech Stack Row for Case Studies */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 40px 0;
+  padding: 24px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.stats-item h4 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--mute);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.stats-item p {
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  font-size: 16.5px;
+  color: var(--text);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.5;
+}
