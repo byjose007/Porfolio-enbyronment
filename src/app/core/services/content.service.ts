@@ -31,8 +31,31 @@ export class ContentService {
       stack: ['Angular 19', 'Signals', 'WebSocket', 'NgRx', 'RxJS']
     },
     {
-      id: 'pegasi',
+      id: 'vy-people',
       number: 'P/02',
+      client: 'Capitole · Vueling Airlines',
+      title: {
+        es: 'VY People',
+        en: 'VY People'
+      },
+      tag: {
+        es: 'RRHH · Flujo de trabajo',
+        en: 'HR · Workflow'
+      },
+      description: {
+        es: 'Suite de RRHH que abarca la renovación del sistema legado PRL (prevención de riesgos laborales) y AenaBadge — un flujo de aprobación en múltiples pasos para acreditaciones aeroportuarias de AENA, con SSO y biblioteca de componentes tipados.',
+        en: 'HR suite covering a legacy-renewal of the PRL workplace-accident tool and AenaBadge — a multi-step approval flow for AENA airport accreditations, with SSO and a typed component library.'
+      },
+      metricNum: '2',
+      metricLabel: {
+        es: 'sistemas RRHH entregados',
+        en: 'HR tools shipped'
+      },
+      stack: ['Angular', 'NestJS', 'TypeORM', 'SSO']
+    },
+    {
+      id: 'pegasi',
+      number: 'P/03',
       client: 'Nisum · Plataforma Pegasi',
       title: {
         es: 'Pegasi',
@@ -55,7 +78,7 @@ export class ContentService {
     },
     {
       id: 'one-stop-shop',
-      number: 'P/03',
+      number: 'P/04',
       client: 'Nisum · Banco BCI',
       title: {
         es: 'One Stop Shop',
@@ -75,29 +98,6 @@ export class ContentService {
         en: 'indep. deploys'
       },
       stack: ['Angular', 'Micro-Frontends', 'Design System', 'Azure']
-    },
-    {
-      id: 'vy-people',
-      number: 'P/04',
-      client: 'Capitole · Vueling Airlines',
-      title: {
-        es: 'VY People',
-        en: 'VY People'
-      },
-      tag: {
-        es: 'RRHH · Flujo de trabajo',
-        en: 'HR · Workflow'
-      },
-      description: {
-        es: 'Suite de RRHH que abarca la renovación del sistema legado PRL (prevención de riesgos laborales) y AenaBadge — un flujo de aprobación en múltiples pasos para acreditaciones aeroportuarias de AENA, con SSO y biblioteca de componentes tipados.',
-        en: 'HR suite covering a legacy-renewal of the PRL workplace-accident tool and AenaBadge — a multi-step approval flow for AENA airport accreditations, with SSO and a typed component library.'
-      },
-      metricNum: '2',
-      metricLabel: {
-        es: 'sistemas RRHH entregados',
-        en: 'HR tools shipped'
-      },
-      stack: ['Angular', 'NestJS', 'TypeORM', 'SSO']
     },
     /*
     {

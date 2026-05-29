@@ -37,6 +37,6 @@ export class ThemeService {
     const saved = localStorage.getItem('ba-theme') as Theme;
     if (saved === 'light' || saved === 'dark') return saved;
     
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    return 'dark';
   }
 }
