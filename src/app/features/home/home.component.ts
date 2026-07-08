@@ -48,7 +48,7 @@ import { NoteCardComponent } from '../../shared/components/note-card.component';
           <a class="btn btn-primary" [routerLink]="['/']" fragment="work">
             {{ t().hero.ctaPrimary }}
           </a>
-          <a class="btn btn-ghost" href="CV_Byron-Frontend.pdf" target="_blank">
+          <a class="btn btn-ghost" href="CV_BYRON-ARMIJOS_FRONTEND_.pdf" target="_blank">
             {{ t().hero.ctaSecondary }} <span class="arrow">→</span>
           </a>
         </div>

@@ -61,7 +61,7 @@ import { LanguageToggleComponent } from './language-toggle.component';
           <app-theme-toggle></app-theme-toggle>
         </div>
         <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; text-align: center; color: var(--mute);">
-          © 2026 Byron Armijos · Alicante, ES
+          © 2026 Byron Armijos
         </span>
       </div>
     </div>

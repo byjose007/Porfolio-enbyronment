@@ -356,10 +356,7 @@ h1.hero-title .ln:nth-child(2) span {
 }
 
 .hero-title .gr {
-  background: linear-gradient(100deg, var(--accent), #9ff5e3 55%, var(--cool));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--accent);
 }
 
 @keyframes rise {
@@ -1031,10 +1028,7 @@ section {
 }
 
 .contact .gr {
-  background: linear-gradient(100deg, var(--accent), #9ff5e3 50%, var(--cool));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--accent);
 }
 
 .contact p {

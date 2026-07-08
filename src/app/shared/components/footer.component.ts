@@ -9,7 +9,6 @@ import { ContentService } from '../../core/services/content.service';
     <footer>
       <div class="wrap foot-inner">
         <span>{{ t().footer.text }}<span class="accent">enbyronment.dev</span></span>
-        <span>Alicante · España</span>
         <span><span class="accent">v1.0</span></span>
       </div>
     </footer>
